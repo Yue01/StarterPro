@@ -1,0 +1,37 @@
+package poply;
+
+public class test {
+/**
+ * 
+			
+    public static void testAnimalVoice(cat c){
+    	c.voice();
+    }
+    
+    public static void testAnimalVoice(dog a){
+	 a.voice();
+    }
+*/
+	
+	public static void testAnimal(poly c){
+		c.voice();
+		if(c instanceof dog){
+			((dog) c).watchDoor();
+		}
+	}
+    
+    
+    public static void main (String[] args){
+    	cat c = new cat();
+        poly a = new dog();
+        poly s = new dog();
+    	testAnimal(c);                       //父类引用指向子类对象
+    	testAnimal(a);
+    	dog s1= (dog)s;
+    	s1.watchDoor();                     //单写这句编译不能通过
+    	
+    }
+    
+}
+
+
