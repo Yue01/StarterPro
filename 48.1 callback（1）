@@ -1,0 +1,27 @@
+package callback;
+
+public class paintwindow {
+        public static void drawFrame(Myframe f){
+        	//system....
+        	System.out.print("huahuahua");
+        	f.paint();
+        	
+        	System.out.print("ahahahah");
+        }
+        public static void main(String[] args){
+        	drawFrame(new Frame10());
+        	
+        }
+}
+class Frame10 extends Myframe{
+	public void paint(){
+		System.out.print("Frame10huahuahua ");
+		System.out.print("zileifangfa1 ");
+	}
+}
+class Frame20 extends Myframe{
+	public void paint(){
+		System.out.print("Frame20huahuahua ");
+		System.out.print("zileifangfa2 ");
+	}
+}
