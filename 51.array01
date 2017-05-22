@@ -1,0 +1,29 @@
+package string;
+
+public class shuzu01 {
+            public static void main(String[] args){
+            	//annoucement;
+            	String Car[];
+            	int[] a;
+            	int b[];//both correct
+            	//new0
+            	a = new int[4];
+            	b = new int[5];
+            	//a[0]= 23;
+            	//new1
+                 for(int i=0;i<a.length;i++){
+                	 a[i]=i+1;
+                 }
+                //new2
+                 /**
+                 int c[]={23,34,45,56};
+                 Car[] cars= (new car("123123"););
+                 Car c1 = new car("123123");
+                 System.out.println(c2==cars[0]);.
+                 
+                 false!!!!!
+                 note：string 的修改是直接创建新的指针及对象，buffer和build不同，使用append。
+                                              注意线程及安全性
+                 */
+            }
+}
