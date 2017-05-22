@@ -1,0 +1,28 @@
+package poply;
+
+public class poly {
+	String str;
+    public void voice(){
+    	   System.out.println("normal voice!");
+    	   
+       }
+}
+class cat extends poly{
+	public void voice(){
+		System.out.print("123123");
+		
+	}
+}
+class dog extends poly{
+	public void voice(){
+		System.out.print("2333333");
+	}
+	public void watchDoor(){
+		System.out.print("原文竟然是seedoor..");
+	}
+}
+class pig extends poly{
+	public void voice(){
+		System.out.print("26666");
+	}
+}
