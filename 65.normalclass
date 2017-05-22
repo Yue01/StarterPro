@@ -1,0 +1,33 @@
+package normalclass;
+
+public class wrapperclass {
+//将基本类型数据转化为对象操作，例如list.add.实际操作的是包装类而非int数据本身。
+	public static void main(String[] args){
+		 Integer i = new Integer(1000);
+		 //integer final类
+		 //Integer i=1000 是编译器做的事
+		 int b = new Integer(1500);
+		 //int c = new Integer(1500).intvalue();
+		 int c=b;
+		 //c = b.intvalue();
+		 
+		 System.out.println(Integer.toHexString(i));
+		 Integer i2 = Integer.parseInt("234");
+		 Integer i3= new Integer("3333");        //两种字符串转换为int
+	}
+	
+}
+/**
+ * [-128,127]之间当做基本数据类型，大于这个就当做对象
+ * ex1：
+ * a= 1000;
+ * b=-1000;
+ * S.o.p(a==b); false，两个不同对象
+ * sop(a.equals(b));true,强制比较数据
+ * 
+ * ex2：
+ * a = 100;
+ * b = -100;
+ * sop(a==b).equals, 都是true
+ * */
+
