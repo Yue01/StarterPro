@@ -1,0 +1,47 @@
+package stringbuild;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class maopao {
+/**
+ * 笔记向
+ * 直接使用arrays功能
+
+    	public static void main(String[] args){
+    		int[] values = {3,1,6,2,9,0,7,4,5,6};
+    		Arrays.sort(values);      //直接使用的话，如果不引用arrays，sort是不能直接用的
+    		System.out.println(Arrays.toString(values));
+    		
+}
+*/
+	//正常写法，不用arrays.
+	public static void main(String[] args){
+		int[] values = {3,1,6,2,9,0,7,4,5,6};
+		sort(values);     
+		System.out.println(Arrays.toString(values));
+	}
+	public static void sort(int[] values){
+		int temp;
+		for(int i= 0;i<values.length;i++){
+			for(int j = 0;j<values.length-1-i;j++){
+				if(values[j]>values[j+1]){
+					temp= values[j];
+					values[j]=values[j+1];
+					values[j+1]= temp;
+				}
+			}
+		}
+	}
+	//程序当中传命令行通过run config；
+	
+	
+	/**
+	 * 遍历数组
+	 * int[] a = {.....};
+	 * for(int n : a );
+	 * System.out.println(n);
+	 * 也可直接嵌套循环遍历
+	 */
+    
+}
