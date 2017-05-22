@@ -1,0 +1,8 @@
+package callback;
+
+public class Myframe {
+          public void paint(){
+        	  System.out.print("你管我打啥");
+          }
+}
+//关于callback机制的具体应用，可以参考这篇博文http://blog.csdn.net/jiayi_yao/article/details/51046526
