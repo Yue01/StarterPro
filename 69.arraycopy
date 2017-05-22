@@ -1,0 +1,32 @@
+package stringbuild;
+
+public class arraycopy {
+/**
+ * 本类是arraycopy的笔记。
+ * arraycopy: belong to system class
+ * public。。。arraycopy：object src
+ *                        int srcpos(where to start the copy process)
+ *                        object dest,(destiny)
+ *                        int destpos
+ *                        int length(from destpos to dest+length-1);
+ * 
+ * 
+ * java.util:operates the array
+ *           aslist
+ *           
+ * 二分搜索：ex：
+ * 
+ * int[] a= {....};
+ * System.out.println(Arrays.toString(a))；//传指针打印，返回该对象的字符串表示
+ * Arrays.sort(a);  //先排序
+ * System.out.println(Arrays.toString(a))；
+ * 
+ * object的tostring转换了数据类型，强制转化为字符串。默认返回名称。
+ * array的返回指针所指对象并转化为字符。
+ * buffer的使用必须先确保对象转化为字符串。                   
+ * 
+ *    
+ * 冒泡和二分见其他class。拼音缩写。
+ */
+	
+}
