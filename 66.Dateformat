@@ -1,0 +1,27 @@
+package testDate;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class testdateformat {
+          public static void main(String[] args){
+        	  DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh mm.ss");
+        	  Date d= new Date(12321314323L);       //不推荐用这个
+        	  String str = df.format(d);            //转化成字符串
+        	  System.out.println(str);
+        	  
+        	  String str2="1977,7,7";
+        	  DateFormat df2= new SimpleDateFormat("yyyy,MM,dd");//前后格式一致，不然报错
+        	  try{
+        	  Date d2=df2.parse(str2);                //字符串转化为时间
+        	  System.out.println(d2);
+        	  }catch (Exception e){                   //parseexception新的jdk包里没找到，按照普通的exception去catch就行。
+        		  e.printStackTrace();
+        	  }
+        	
+        	  
+        			  
+        	  }
+          
+}
