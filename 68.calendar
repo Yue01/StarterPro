@@ -1,0 +1,19 @@
+package normalclass;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar; 
+
+public class calender {
+       public static void main(String[] args){
+    	   Calendar c = new GregorianCalendar();
+    	   c.set(Calendar.YEAR, 2001);  //注意大小写
+    	   c.set(Calendar.MONTH ,1);     //1是二月
+    	   c.set(2001, 1, 10, 20, 34);
+    	   Date d = c.getTime();
+    	   System.out.print(d);
+    	   c.add(Calendar.YEAR, 30);
+    	   Date d1 = c.getTime();
+    	   System.out.print("\n"+d1);
+       }
+}
