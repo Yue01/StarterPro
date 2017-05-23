@@ -1,0 +1,53 @@
+package normalclass;
+
+//已经算是比较复杂一点的小程序的，不绕，细节多一点。
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
+
+
+
+public class visiblecalender {
+        public static void main(String[] args){
+
+        System.out.println("请输入日期(按照格式：2030-3-10)："); 
+    		Scanner scanner = new Scanner(System.in);
+    		String temp = scanner.nextLine();
+    		
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");                    //注意月是MM不是mm，被坑了个半死啊woc
+        try{
+                Date date = format.parse(temp);                                    //转化为时间
+                Calendar calendar = new GregorianCalendar();                       //导入日历
+                calendar.setTime(date);
+                int day = calendar.get(Calendar.DATE);                             //方便之后标记该日期
+                calendar.set(Calendar.DATE , 1);                                   //先确定这个月第一天是星期几
+                System.out.println(calendar.get(Calendar.DAY_OF_WEEK ) -1);          
+                System.out.println(calendar.getActualMaximum(Calendar.DATE));       //确定这个月有多少天
+                int maxDate = calendar.getActualMaximum(Calendar.DATE);
+            
+        System.out.println("日\t一\t二\t三\t四\t五\t六");                             //格式先打好
+             for(int m = 1;m< calendar.get(Calendar.DAY_OF_WEEK );m++){             //第一行先确定好 从周几开始打。周六是7，打6次；
+            	 System.out.print("\t");
+             }
+                
+        for(int i=1;i<=maxDate;i++){
+        		if(i==day){
+        			System.out.print("*");                                          //加个星号做标记
+        		}
+        	  	System.out.print(i+"\t");                                       //ln直接换行了
+        		if(calendar.get(Calendar.DAY_OF_WEEK )==Calendar.SATURDAY-1 ){      //周六打完就换行。也可以把下面的add放上去，直接比较，不用-1.
+        		  System.out.println("\n");        			                           //以上述为例，day of week是周三，也就是4，打完无操作，空格，i+1，date+1
+        		}                                                                   //打完周六，i=4,date =6,换行
+              calendar.add(calendar.DATE, 1);
+        	}
+            } catch(ParseException e){
+            	e.printStackTrace();
+            }
+        }
+
+}
