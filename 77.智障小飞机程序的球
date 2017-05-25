@@ -1,0 +1,364 @@
+1.gameutil
+package pack1;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+
+/**
+ * 用来封装读取图片部分。其他类直接调用方法即可
+ * @author Yue
+ *
+ */
+public class GameUtil {
+	     private GameUtil(){}
+	
+         public static Image getImage(String path){
+        	  URL u = GameUtil.class.getClassLoader().getResource(path);          //这个类 直接复制粘贴吧不用太深理解的
+        	  BufferedImage img = null;
+         try {
+        	 img = ImageIO.read(u);
+        	 
+         }catch (IOException e){ 
+        	 e.printStackTrace();
+         }
+         
+         return img;
+         }
+}
+
+2.GameFrame
+package pack1;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+//测试类，基本设置
+
+public class GameFrame  extends Frame{
+	
+	
+	   Image img = GameUtil.getImage("image/sun.jpg");                 //注意文件夹名称正确。GameUtil是自己写的类
+	   
+           public void launchFrame(){
+                    setSize(300,300);
+                    setLocation(100,100);
+                    setVisible(true);
+                    
+           new PaintTread().start();
+           
+                    
+           addWindowListener(new WindowAdapter(){
+        	   public void windowClosing(WindowEvent e ){               //此处WindowEvent e可以停留鼠标查看其api解释
+        		   System.exit(0);                                      //GUI编程不必深究，直接跟着用就是了。
+        		                                                        //将来估计也不怎么用得上
+        	   }
+           });
+           }
+           
+        double x=100,y=100;  
+           
+           @Override
+		public void paint(Graphics g) {
+			// TODO Auto-generated method stub
+	        g.drawLine(100,100, 200, 200);
+	        g.drawRect(100,100, 200, 200);
+	        g.drawOval(100,100, 200, 200);                
+	        
+	        Color c = g.getColor();	 
+	        g.setColor(Color.green);
+	        Font f =new Font("宋体",Font.BOLD,100);
+			g.setFont(f);
+	        g.drawString("lmao", 200, 200);
+     
+	        g.setColor(Color.red);
+	        g.fillRect(100, 100, 20, 20);
+	        g.setColor(c);                                         //用完画笔还原
+	        
+	        g.drawImage(img,(int)x,(int)y,null);
+	        x+=3;
+	        y+=3;
+		}
+        class PaintTread extends Thread{                        //其实不可取。只能说这么做是最简单的。用继承的方式开辟线程非常影响可拓展性
+        	public void run(){
+        		while(true){                           
+        			repaint();                                        //球要一直出
+
+        	try {
+				Thread.sleep(40);                                       //有个间隔，不然cpu太忙
+			} catch (InterruptedException e) {
+							
+				e.printStackTrace();
+			}                    		
+        }
+    }
+}
+
+
+
+		public static void main(String[] args){
+        	   GameFrame gf = new GameFrame();                   //记得换类名
+        	   gf.launchFrame();
+        	   
+           }
+}
+
+
+3.GameFrame 01
+package pack1;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+/**
+ * 简单的直线飞，有一定的域
+ * @author Yue
+ *
+ */
+
+	public class GameFrame01  extends Frame{
+		Image img = GameUtil.getImage("image/sun.jpg");              
+	    
+		public void launchFrame(){
+			 setSize(500, 500);
+			 setLocation(100, 100);
+			 setVisible(true);
+			 
+	         new PaintTread().start();
+	         
+	         addWindowListener(new WindowAdapter(){
+	             public void windowClosing(WindowEvent e ){      
+	        	 System.exit(0);                                   
+	         }	                                                
+	     });
+	}
+	           
+	    double x=100,y=100;  
+	    private boolean left;                         
+	    
+	           
+	    public void paint(Graphics g) {                                
+		     g.drawImage(img,(int)x,(int)y,null);
+		     if(left){
+		    	 x-=3;
+		     }else{
+		    	 x+=3;
+		     }
+		     if(x>470){
+		    	 left = true;
+		    	 
+		     }
+		     if(x<0){
+		    	 left = false;
+		     }
+
+}
+	    
+	    
+	  /**
+	   * 接下来这个部分是用来开辟线程的。只能说简单，但是不可取，牺牲了可拓展性。
+	   * @author Yue
+	   *
+	   */
+	  
+	   class PaintTread extends Thread{                     
+	         public void run(){
+	        	
+	            while(true){                                
+	        			repaint();
+
+	        	try {
+					Thread.sleep(40);                          
+				} catch (InterruptedException e) {
+								
+					e.printStackTrace();
+				}                    		
+	        }
+	    }
+	}
+
+			public static void main(String[] args){
+	        	   GameFrame01 gf1 = new GameFrame01();         
+	        	   gf1.launchFrame();
+	        	   
+	           }
+	}
+  
+  
+4.GameFrame 02
+package pack1;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+/**
+ * 有一定方向，且弹性碰撞
+ * @author Yue
+ *
+ */
+	public class GameFrame02  extends Frame{
+		Image img = GameUtil.getImage("image/sun.jpg");               
+	    
+		public void launchFrame(){
+			 setSize(500, 500);
+			 setLocation(100, 100);
+			 setVisible(true);
+			 
+	         new PaintTread().start();
+	         
+	         addWindowListener(new WindowAdapter(){
+	             public void windowClosing(WindowEvent e ){         
+	        	 System.exit(0);                                    
+	         }	                                                     
+	     });
+	}
+	           
+	    private double x=100,y=100,degree=3.14/3;  
+	    private boolean left;                                  
+	    
+	           
+	    public void paint(Graphics g) {
+		     g.drawImage(img,(int)x,(int)y,null);
+             x+=30*Math.cos(degree);
+             y+=30*Math.sin(degree);
+             if(y>470||y<30){
+            	 degree = degree*(-1); 
+             }
+
+             if(x>470||x<0){
+            	 degree = Math.PI -degree;
+             }
+             
+}
+	    
+	    
+	  /**
+	   * 接下来这个部分是用来开辟线程的。只能说简单，但是不可取，牺牲了可拓展性。
+	   * @author Yue
+	   *
+	   */
+	  
+	   class PaintTread extends Thread{                     
+	         public void run(){
+	        	
+	            while(true){                            
+	        			repaint();
+
+	        	try {
+					Thread.sleep(40);                       
+				} catch (InterruptedException e) {
+								
+					e.printStackTrace();
+				}                    		
+	        }
+	    }
+	}
+
+			public static void main(String[] args){
+	        	   GameFrame02 gf2 = new GameFrame02();             
+	        	   gf2.launchFrame();
+	        	   
+	           }
+	}
+5.GameFrame 04
+package pack1;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+/**
+ * 椭圆，课件里没有，手打的。MyFrame也就是建了个父类，自己设置下吧。
+ * @author Yue
+ *
+ */
+	public class GameFrame04  extends Frame{
+		Image img = GameUtil.getImage("image/sun.jpg");                
+	    
+		public void launchFrame(){
+			 setSize(500, 500);
+			 setLocation(100, 100);
+			 setVisible(true);
+			 
+	         new PaintThread().start();
+	         
+	         addWindowListener(new WindowAdapter(){
+	             public void windowClosing(WindowEvent e ){         
+	        	 System.exit(0);                                      
+	         }	                                                      
+	     });
+	}
+	           
+
+	    
+	           
+	    private double x=100,y=100;          
+		  private double degree=3.14/3;    
+
+		public void paint(Graphics g) {
+			g.drawImage(img, (int)x, (int)y, null);
+			
+			x =100+ 100*Math.cos(degree);
+			y =200+ 50*Math.sin(degree);
+			
+			degree +=0.1;
+			
+		}
+             
+
+	    
+	    
+	  /**
+	   * 接下来这个部分是用来开辟线程的。只能说简单，但是不可取，牺牲了可拓展性。
+	   * @author Yue
+	   *
+	   */
+	  
+	  class PaintThread extends Thread{                     
+	         public void run(){
+	        	
+	            while(true){                                   
+	        			repaint();
+
+	        	try {
+					Thread.sleep(40);                          
+				} catch (InterruptedException e) {
+								
+					e.printStackTrace();
+				}                    		
+	        }
+	    }
+	  }
+	
+
+
+
+
+
+			public static void main(String[] args){
+	        	   GameFrame04 gf4 = new GameFrame04();          
+	        	   gf4.launchFrame();
+	        	   
+	           }
+	}
+
+
+
+
+
+
+
