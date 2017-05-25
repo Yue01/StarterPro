@@ -1,3 +1,11 @@
+/**
+ * 几个GameFrame之间重复部分很多，挑paint方法看即可。实际并不长。
+ * 自己补补GUI编程的基本知识即可。
+ * @author Yue
+ *
+ */
+ 
+ 
 1.gameutil
 package pack1;
 
