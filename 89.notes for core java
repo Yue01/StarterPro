@@ -1,0 +1,36 @@
+6.3
+//p.145
+manager不能直接访问employee的私有域，需要通过接口。如果manager与employee共有有个方法名
+加入super.getsalary（）；
+
+//p.146
+super(int n, string a, double b....);
+这里是调用超累employee中含有 n a b 参数的构造器的意思
+
+//p.147
+子类和父类的范围覆盖。
+父类可以引用为子类，因为父类的范围小于子类
+ex:
+employee e;
+e= new Employee();
+e= new manager();    //both ok
+
+manager boss= new manager();
+employee[] staff=new new employee[3];
+staff[0]=boss;       //still ok
+
+boss.setbonus(5000);
+staff[0].setbonus(5000);   //error:staff[0]'s still regarded as employee;
+
+manager s = staff[1];     //error:not every employee is a manager;
+
+//p.152
+重写时子类方法不能低于父类的可见性
+//p.154
+强制转型时，不能向下转型。
+在强制转型的过程中，使用instanceof来进行检验
+if(staff[1] instanceof manager){
+    boss=(Manager)staff[1];
+}
+
+
