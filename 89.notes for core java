@@ -1,11 +1,13 @@
 6.3
 //p.145
-manager不能直接访问employee的私有域，需要通过接口。如果manager与employee共有有个方法名
+manager不能直接访问employee的私有域，需要通过接口。
+这一点可以保证数据的安全性同时能够访问数据。
+如果manager与employee共有有个方法名
 加入super.getsalary（）；
 
 //p.146
 super(int n, string a, double b....);
-这里是调用超累employee中含有 n a b 参数的构造器的意思
+这里是调用父类employee中含有 n a b 参数的构造器的意思
 
 //p.147
 子类和父类的范围覆盖。
