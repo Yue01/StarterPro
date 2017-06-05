@@ -26,6 +26,7 @@ staff[0].setbonus(5000);   //error:staff[0]'s still regarded as employee;
 
 manager s = staff[1];     //error:not every employee is a manager;
 
+6月4日
 //p.152
 重写时子类方法不能低于父类的可见性
 //p.154
@@ -116,8 +117,8 @@ public static double max(double...values)   //这里的...是代码的一部分
    for(double v:values)if(v>values)largest= v;
    return largest;
 }
-
-
+//6月6日
+300节那个代码讲的有点啰嗦。。建议直接看core java，然后直接百度相关概念，再去看。清晰很多。
 
 
 
