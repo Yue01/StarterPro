@@ -1,0 +1,15 @@
+hashset本身无序，需要通过迭代器进行遍历。list也可，但不一定。
+初始化方式：
+
+//while方式：
+Iterator iter = set.Iterator();   //set是之前定义的，将该迭代器分配给这个set
+while（iter.hasnext()){
+     String str = (String)iter.next();    //object next():返回当前遍历的元素，并移至下一个游标
+     System.out.println(str):
+     }
+
+//if 方法
+if(Iterator iter = set.Iterator();iter.hasnext();){
+                   ............
+}
+remove：删除游标左边的元素。
