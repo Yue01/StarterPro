@@ -1,0 +1,139 @@
+public int find(long searchkey){
+
+	int lowerBound = 0;
+	int upperBound = nElem-1;
+	int curin;
+    while(true){
+    	curin = (lowerBound+upperBound)/2;
+    	if(a[curin]==searchkey){
+    		return curin;
+    		else if(lowerBound>upperBound)
+    			return nElem;
+    		else{
+    			if (a[curin]<searchkey) {
+                lowerBound = curin+1;
+                else {
+                upperBound = curin-1l
+
+                }
+    			}
+    		}
+    	}
+    }
+}
+//前提取决于线性数组
+
+//存储对象
+/**
+*定义方法
+*/
+class Person{
+	private String lastname;
+    private String firstname;
+    private int age;
+    public Person(String last, String first, int a){
+             this.lastname = last;
+             this.firstname = first;
+             this.age ;
+    }
+    public void displayPerson(){
+    	System.out.println("Last name"+lastname);
+    	System.out.println(", first name"+firstname);
+    	System.out.println(", age"+age);
+    
+    }
+    public String getlast(){
+    	return lastname;
+    }
+}
+class classdataarry{
+	private person[] a;
+	private int nElem;
+	public classdataarry(int max){
+         a =  new Person[max];
+         nElem = 0;
+	}
+	public Person find(String searchname){
+		int j;
+		for (j=0;j<nElem ;j++ ) {
+			if(a[j].getlast().equals(searchname))
+				break;
+			if(j==nElem)
+				return null;
+			else
+				retuan a[j];
+
+		}
+	}
+	public boolean delete(String searchname){
+		int j;
+		for (j=0;j<nElem ;j++ ) {
+			if (a[j].getlast().equals(searchname)) 
+				break;
+			if(j==nElem)
+				retuan false;
+			else{
+            for (k=j;k<nElem ;k++ ) {
+	            a[k]=a[k+1];
+	            nElem--;
+				retuan true;
+			}
+			}//end
+    public void displayA(){
+    	for (int j=0;j<nElem ;j++ ) {
+    		a[j]displayPerson();
+    	}
+        }
+    }
+}
+
+//冒泡算法:冒泡部分
+public  void bubblesor(){
+	int out, in;
+	for (out=nElem-1;out>1 ;out-- ) {
+		for (in=0;in<out ;in++ ) {
+		  if (a[in]>a[in+1]) {
+		  		swap(in,in+1);
+		  	}	
+		}
+	}
+}
+private  void swap(int one, int two){
+	long temp = a[one];
+	a[one]= a [two];
+	a[two] = temp;
+}
+
+//if 总共有n个数据，冒泡排序的总运算量为n^2/2因此是o(n^2)时间级别运算
+//基本上，只要看到某一个循环嵌套再另一个循环里，基本就可以确定属于O(n^2)级别的运算
+
+//选择性排序：从头到尾便利，最小的值放在最小下标处
+//节省了比较次数，但是循环次数依然没变
+public void  selectsort(){
+	int out,in,min;
+	for (out=0;out<nElem ;out++ ) {
+		min=out;
+		for (in=out+1;in<nElem ;in++ ) {
+			if(a[in]<a[min]);
+			min=in;
+			swap(out,min);
+
+		}
+	}
+}
+
+//插入排序
+public void insertionsort{
+	int in ,out;
+	for (out=1 ; out<nElem;out++ ) {
+		long temp = a[out];
+		in= out;
+		while (in>0&&a[in-1]>=temp) {
+			a[in]=a[in-1];
+			--in;
+		}
+		a[in]= temp;
+	}
+}
+//字符之间的compareto？？
+
