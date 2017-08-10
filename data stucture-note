@@ -1,0 +1,65 @@
+//排序算法由于嵌套循环，复杂度o(n^2)时间级别
+链表需要维护第一个链结点的引用：first
+其余链表紧接着该结点即可。在查询开始结点和尾结点时预选量为o(1);
+//owers.java
+
+public static void dotowers(int topN,char from, char inter, char to) {
+	if(topN==1)
+		System.out.println("Disk 1 from"+from+"to"+to);
+	else{
+		dotowers(topN-1,from,to,inter);
+		System.out.println("Disk"+topN+"from"+from+"to"+to);
+		dotowers(topN-1,inter,from,to);
+	}
+}//end
+
+
+//mergesort
+public static void merge(int[] arrayA,. int sizeA,
+	                     int[] arrayB,  int sizeB
+	                     int[] arrayC)
+{
+	int aDex=0,bDex=0,cDex=0;
+	while(aDex<sizeA &&bDex<sizeB) //当AB均不为空
+	  if(arrayA[aDex]<arrayB[bDex])
+	  	arrayC[cDex++] =arrayA[aDex++];
+	  else
+	  	arrayC[cDex++] = arrayB[bDex++];
+	while(aDex<sizeA)                  //arrayB is empty
+		arrayC[cDex++]=arrayA[aDex++]; //arrayA isnt
+	while(bDex<sizeB)                  //arrayA is empty
+		araryC[cDex++]=arrayB[bDex++]; //arrayB isnt
+}//end
+//总共三个循环：ab比较，a空，b空
+//对于整体数据：分组
+private void recmerge(long[] workspace, int lowerbound, int upperbound){
+	if(lowerbound==upperbound)
+		return;
+	else{
+		int mid = (lowerbound+upperbound)/2;
+		recmerge(workspace,lowerbound,mid);
+		recmerge(workspace,mid+1,upperbound);
+		merge(workspace,lowerbound,mid+1,upperbound)
+	}
+}
+//选择一支队伍：（5，3）5个当中选3个
+//（5,3）= （4,2）+（4,3）
+//希尔排序 划分算法
+
+
+如果有很多的插入操作，不应该采用有序数组。
+
+节点删除后，后继节点可以代替？30-15-5，不再升序
+
+红黑规则：
+1.结点非黑即红
+2.根总是黑的
+3.如果结点是红色，那么子节点必黑
+4.从根刀叶节点或空子节点的任意位置，黑色的节点的数目相同
+
+
+修正违规情况：
+1.改变结点颜色
+2.执行旋转操作
+
+2-3树
